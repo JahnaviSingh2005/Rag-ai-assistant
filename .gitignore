@@ -1,0 +1,18 @@
+# Sensitive Strings
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Environments
+.venv/
+venv/
+env/
+
+# IDEs
+.vscode/
+.idea/
+
+# Database
+chroma_db/
