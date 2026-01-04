@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-BACKEND_URL = "http://localhost:8000"
+BACKEND_URL = "http://127.0.0.1:8003"
 
 st.set_page_config(page_title="Personal AI Knowledge Assistant")
 
@@ -29,7 +29,8 @@ if uploaded_file:
                 # Use getvalue() to ensure we have the bytes
                 files = {"file": (uploaded_file.name, uploaded_file.getvalue(), "application/pdf")}
                 
-                res = requests.post(f"{BACKEND_URL}/upload/", files=files)
+                with st.spinner("Processing... (First time may take longer to download AI models)"):
+                    res = requests.post(f"{BACKEND_URL}/upload/", files=files)
                 
                 st.write(f"DEBUG: Status Code: {res.status_code}")
                 
@@ -58,7 +59,10 @@ if st.button("Ask"):
         data = response.json()
 
         st.subheader("Answer")
-        st.write(data.get("answer", "No answer returned"))
+        if "answer" in data:
+            st.write(data["answer"])
+        else:
+            st.error(f"Backend Error: {data.get('detail', 'Unknown error')}")
 
         sources = data.get("sources", [])
         if sources:

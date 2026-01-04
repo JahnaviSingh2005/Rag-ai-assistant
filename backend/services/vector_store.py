@@ -4,7 +4,7 @@ import os
 
 # Use persistent client so data actually exists
 # Ensure the directory exists or let chroma create it
-PERSIST_DIRECTORY = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "chroma_db")
+PERSIST_DIRECTORY = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "chroma_db_v2")
 client = chromadb.PersistentClient(path=PERSIST_DIRECTORY)
 
 collection = client.get_or_create_collection(
