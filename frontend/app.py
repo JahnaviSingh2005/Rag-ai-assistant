@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-BACKEND_URL = "http://127.0.0.1:8003"
+BACKEND_URL = "http://127.0.0.1:8000"
 
 st.set_page_config(page_title="Personal AI Knowledge Assistant")
 

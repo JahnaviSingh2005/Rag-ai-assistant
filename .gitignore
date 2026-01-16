@@ -16,3 +16,4 @@ env/
 
 # Database
 chroma_db/
+chroma_db_v2/
